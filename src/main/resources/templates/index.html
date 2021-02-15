@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Имя пользователя</th>
+            <th>Фамилия пользователя</th>
+            <th>ID банковского аккаунта</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"/>
+            <td th:text="${user.name}"/>
+            <td th:text="${user.lastName}"/>
+            <td th:text="${user.account.getId()}"/>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
