@@ -16,6 +16,7 @@
             <th>Имя пользователя</th>
             <th>Фамилия пользователя</th>
             <th>ID банковского аккаунта</th>
+            <th>Действия</th>
         </tr>
         </thead>
         <tbody>
@@ -23,7 +24,11 @@
             <td th:text="${user.id}"/>
             <td th:text="${user.name}"/>
             <td th:text="${user.lastName}"/>
-            <td th:text="${user.account.getId()}"/>
+            <td th:text="${user.account != null} ? ${user.account.getId()}"/>
+            <td>
+                <a th:href="@{/users/{id}(id = ${user.getId()})}">Посмотреть</a>
+                <a th:href="@{/users/{id}/edit(id = ${user.getId()})}">Изменить</a>
+            </td>
         </tr>
         </tbody>
     </table>
