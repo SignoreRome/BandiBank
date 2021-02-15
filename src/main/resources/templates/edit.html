@@ -9,9 +9,15 @@
 <form th:method="PATCH" th:action="@{/users/{id}(id =${user.getId()})}" th:object="${user}">
     <label for="name">Enter name: </label>
     <input type="text" th:field="*{name}" id="name"/>
-    <br/>
+    <hr/>
     <label for="lastName">Enter last name: </label>
     <input type="text" th:field="*{lastName}" id="lastName"/>
+    <hr/>
+    <label for="email">Enter email: </label>
+    <input type="text" th:field="*{email}" id="email"/>
+    <hr/>
+    <label for="phone">Enter phone: </label>
+    <input type="text" th:field="*{phone}" id="phone"/>
     <hr/>
     <input type="submit" value="Update!"/>
 </form>

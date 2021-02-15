@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Person</title>
+    <title>User Info</title>
 </head>
 <body>
 
@@ -14,17 +13,60 @@
             <th>ID</th>
             <th>Имя пользователя</th>
             <th>Фамилия пользователя</th>
+            <th>Номер телефона</th>
+            <th>Email</th>
             <th>ID банковского аккаунта</th>
         </tr>
         </thead>
         <tbody>
-            <td th:text="${user.id}"/>
-            <td th:text="${user.name}"/>
-            <td th:text="${user.lastName}"/>
-            <td th:text="${user.account != null} ? ${user.account.getId()}"/>
+        <td th:text="${user.id}"/>
+        <td th:text="${user.name}"/>
+        <td th:text="${user.lastName}"/>
+        <td th:text="${user.phone}"/>
+        <td th:text="${user.account != null} ? ${user.email}"/>
+        <td th:text="${user.account != null} ? ${user.account.getId()}"/>
         </tbody>
     </table>
 </div>
+<div th:if="${user.account != null}">
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Number</th>
+                <th>Balance</th>
+                <th>VALID THRU</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="CC : ${user.account.creditCards}">
+                <td th:text="${CC.number}"/>
+                <td th:text="${CC.balance}"/>
+                <td th:text="${CC.validThru}"/>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Number</th>
+                <th>Balance</th>
+                <th>VALID THRU</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="DC : ${user.account.debitCards}">
+                <td th:text="${DC.number}"/>
+                <td th:text="${DC.balance}"/>
+                <td th:text="${DC.validThru}"/>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 <br/>
 <a th:href="@{/users/{id}/edit(id = ${user.getId()})}">Edit</a>
 <br/>
