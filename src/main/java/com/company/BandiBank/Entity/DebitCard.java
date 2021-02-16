@@ -23,4 +23,15 @@ public class DebitCard {
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account accountDC;
+
+    public DebitCard(int balance, Account accountDC) {
+        this.balance = balance;
+        this.accountDC = accountDC;
+    }
+
+    public DebitCard(Date validThru, int balance, Account accountDC) {
+        this.validThru = validThru;
+        this.balance = balance;
+        this.accountDC = accountDC;
+    }
 }

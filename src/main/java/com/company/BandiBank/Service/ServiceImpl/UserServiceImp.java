@@ -45,4 +45,10 @@ public class UserServiceImp implements UserService {
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
+
+    @Override
+    @Transactional
+    public User save(User user) {
+        return userRepository.save(user);
+    }
 }

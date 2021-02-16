@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account</title>
+</head>
+<body>
+
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Дата создания</th>
+            <th>Номер депозитного счета</th>
+            <th>Кол-во кредитных карт</th>
+            <th>Кол-во дебетовых карт</th>
+        </tr>
+        </thead>
+        <tbody>
+        <td th:text="${account.id}"/>
+        <td th:text="${account.createdTime}"/>
+        <td th:text="${account.deposit != null} ? ${account.deposit.getNumber()}"/>
+        <td th:text="${account.creditCards.size()}"/>
+        <td th:text="${account.debitCards.size()}"/>
+        </tbody>
+    </table>
+</div>
+
+<div th:if="${account.creditCards.size() != 0}">
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Number</th>
+                <th>Balance</th>
+                <th>VALID THRU</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="CC : ${account.creditCards}">
+                <td th:text="${CC.number}"/>
+                <td th:text="${CC.balance}"/>
+                <td th:text="${CC.validThru}"/>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</br>
+</hr>
+</br>
+<div th:if="${account.debitCards.size() != 0}">
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Number</th>
+                <th>Balance</th>
+                <th>VALID THRU</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="DC : ${account.debitCards}">
+                <td th:text="${DC.number}"/>
+                <td th:text="${DC.balance}"/>
+                <td th:text="${DC.validThru}"/>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</br>
+</hr>
+</br>
+<div>
+    <table border="1" style="height: 18px; width: 100%; border-collapse: collapse; border-style: hidden;">
+        <tbody>
+        <tr style="height: 18px;">
+            <td style="width: 30.661%; height: 18px;" th:if="${account.deposit == null}">Открыть депозит</td>
+            <td style="width: 36.0056%; height: 18px;">Создать дебетовую карту</td>
+            <td style="width: 33.3333%; height: 18px;">Создать кредитную карту</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
