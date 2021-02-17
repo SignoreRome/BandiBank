@@ -1,12 +1,14 @@
 package com.company.BandiBank.Entity;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "debitcards")
@@ -17,7 +19,7 @@ public class DebitCard {
     @Column(name = "number")
     private Long number;
     @Column(name = "valid_thru")
-    private Date validThru;
+    private Date validThru = new Date();
     @Column(name = "balance")
     private int balance;
     @ManyToOne

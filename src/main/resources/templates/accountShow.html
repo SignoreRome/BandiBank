@@ -12,14 +12,17 @@
         <tr>
             <th>ID</th>
             <th>Дата создания</th>
+            <th>Баланс</th>
             <th>Номер депозитного счета</th>
             <th>Кол-во кредитных карт</th>
             <th>Кол-во дебетовых карт</th>
+
         </tr>
         </thead>
         <tbody>
         <td th:text="${account.id}"/>
         <td th:text="${account.createdTime}"/>
+        <td th:text="${balance}"/>
         <td th:text="${account.deposit != null} ? ${account.deposit.getNumber()}"/>
         <td th:text="${account.creditCards.size()}"/>
         <td th:text="${account.debitCards.size()}"/>
@@ -77,9 +80,15 @@
     <table border="1" style="height: 18px; width: 100%; border-collapse: collapse; border-style: hidden;">
         <tbody>
         <tr style="height: 18px;">
-            <td style="width: 30.661%; height: 18px;" th:if="${account.deposit == null}">Открыть депозит</td>
-            <td style="width: 36.0056%; height: 18px;">Создать дебетовую карту</td>
-            <td style="width: 33.3333%; height: 18px;">Создать кредитную карту</td>
+            <td style="width: 30.661%; height: 18px;" th:if="${account.deposit == null}">
+                <a th:href="@{/users/accounts/{idAcc}/new_deposit (idAcc = ${account.getId()})}">Открыть депозит</a>
+            </td>
+            <td style="width: 36.0056%; height: 18px;">
+                <a th:href="@{/users/accounts/{idAcc}/new_debit_card (idAcc = ${account.getId()})}">Создать дебетовую карту</a>
+            </td>
+            <td style="width: 33.3333%; height: 18px;">
+                <a th:href="@{/users/accounts/{idAcc}/new_credit_card (idAcc = ${account.getId()})}">Создать кредитную карту</a>
+            </td>
         </tr>
         </tbody>
     </table>

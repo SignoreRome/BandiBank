@@ -25,6 +25,7 @@ public class AccountsController {
     @GetMapping("/accounts/{accId}")
     public String showAcc(Model model, @PathVariable("accId") Long accId) {
         model.addAttribute("account", accountService.showAcc(accId).get());
+        model.addAttribute("balance", accountService.sumBalance(accId));
         return "accountShow";
     }
 

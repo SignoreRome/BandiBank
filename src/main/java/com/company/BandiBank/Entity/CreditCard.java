@@ -1,14 +1,16 @@
 package com.company.BandiBank.Entity;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "creditcards")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class CreditCard {
     @Id
@@ -17,20 +19,18 @@ public class CreditCard {
     @Column(name = "number")
     private Long number;
     @Column(name = "valid_thru")
-    private Date validThru;
+    private Date validThru = new Date();
     @Column(name = "balance")
     private int balance;
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account accountCC;
 
-    public CreditCard(int balance, Account accountCC) {
+    public CreditCard(int balance) {
         this.balance = balance;
-        this.accountCC = accountCC;
     }
 
-    public CreditCard(Date validThru, int balance, Account accountCC) {
-        this.validThru = validThru;
+    public CreditCard(int balance, Account accountCC) {
         this.balance = balance;
         this.accountCC = accountCC;
     }

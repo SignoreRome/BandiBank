@@ -26,7 +26,7 @@ create table Deposits
 create table CreditCards
 (
     number     int primary key default nextval('CreditCard_seq'),
-    valid_thru date not null   default current_date + 365 * 3,
+    valid_thru date not null   default (current_date + 365 * 3),
     balance    int  not null   default 0,
     account_id int  not null,
     constraint FK_ACC_ID foreign key (account_id) references Accounts (id)
@@ -35,7 +35,7 @@ create table CreditCards
 create table DebitCards
 (
     number     int primary key default nextval('DebitCard_seq'),
-    valid_thru date not null   default current_date + 365 * 5,
+    valid_thru date not null   default (current_date + 365 * 5),
     balance    int  not null   default 0,
     account_id int  not null,
     constraint FK_ACC_ID foreign key (account_id) references Accounts (id)

@@ -28,4 +28,15 @@ public class AccountServiceImpl implements AccountService {
     public Account createAcc(Account account) {
         return accountRepository.save(account);
     }
+
+    @Override
+    @Transactional
+    public Account saveAcc(Account account) {
+        return accountRepository.save(account);
+    }
+
+    @Override
+    public Integer sumBalance(Long id) {
+        return accountRepository.sumBalance(id);
+    }
 }
