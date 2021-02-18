@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional(readOnly = true)
 public class UserServiceImp implements UserService {
     private UserRepository userRepository;
 
@@ -30,13 +31,13 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = false)
     public User createUser(User user) {
         return userRepository.save(user);
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = false)
     public void updateUser(Long id, User updatedUser) {
         userRepository.updateUser(id, updatedUser.getName(), updatedUser.getLastName());
     }
@@ -47,7 +48,7 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = false)
     public User save(User user) {
         return userRepository.save(user);
     }

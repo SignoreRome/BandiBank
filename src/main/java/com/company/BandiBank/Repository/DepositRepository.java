@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DepositRepository extends JpaRepository<Deposit, Long> {
+//    void increaseBalance(Deposit deposit, int sizeTransfer);
+//    void decreaseBalance(Deposit deposit, int sizeTransfer);
 }

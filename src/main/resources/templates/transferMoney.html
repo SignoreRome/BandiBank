@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Money transfer</title>
+</head>
+<body>
+<!--<form th:method="POST"-->
+<!--      th:action="@{/users/accounts/{idAcc}/transfer_money/inner_transaction (idAcc = ${account.getId()})}"-->
+<!--      th:object="${transaction}">-->
+<!--    <label for="fromNum">From: </label>-->
+<!--    <input type="text" th:field="*{fromNum}" id="fromNum"/>-->
+<!--    <hr/>-->
+<!--    <label for="toNum">To: </label>-->
+<!--    <input type="text" th:field="*{toNum}" id="toNum"/>-->
+<!--    <hr/>-->
+<!--    <label for="transferSize">Size: </label>-->
+<!--    <input type="text" th:field="*{transferSize}" id="transferSize"/>-->
+<!--    <hr/>-->
+<!--    <input type="submit" value="Done"/>-->
+<!--</form>-->
+
+
+<form th:method="POST"
+      th:action="@{/users/accounts/{idAcc}/transfer_money/outer_transaction (idAcc = ${account.getId()})}"
+      th:object="${transaction}">
+<!--    <label for="from">From: </label>-->
+<!--    <input type="text" th:field="${account.getDeposit().getNumber()}" name="fromNum" id="from"/>-->
+<!--    <hr/>-->
+    <label for="toPhone">Phone number: </label>
+    <input type="text" th:field="*{toPhone}"  id="toPhone"/>
+    <hr/>
+    <label for="transferSize1">Size: </label>
+    <input type="text" th:field="*{transferSize}" id="transferSize1"/>
+    <hr/>
+    <label for="Comment">Comment: </label>
+    <input type="text" th:field="*{comment}" id="Comment"/>
+    <hr/>
+    <input type="submit" value="Done"/>
+</form>
+</body>
+</html>

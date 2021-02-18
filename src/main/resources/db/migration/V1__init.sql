@@ -12,7 +12,8 @@ create sequence DebitCard_seq
 create table Accounts
 (
     id           serial primary key,
-    created_time date default current_date
+    created_time date default current_date,
+    user_id      int
 );
 
 create table Deposits
@@ -53,13 +54,30 @@ create table Users
     constraint CH_USER_PHONE check ( length(phone) = 7 )
 );
 
+create table TransferMoney
+(
+    id            serial primary key,
+    from_num      int                      not null,
+    to_num        int,
+    to_phone      varchar,
+    from_name     varchar                  not null,
+    transfer_size int                      not null,
+    transfer_time timestamp with time zone not null default current_timestamp(2),
+    comment       varchar,
+    constraint FK_PHONE_USER foreign key (to_phone) references Users (phone)
+);
+
+alter table Accounts
+    add constraint fk_account_user foreign key (user_id) references Users (id);
+
 insert into Accounts (created_time)
 values (default),
        (Default),
        (DEFAULT);
 
 insert into Deposits (balance, account_id)
-VALUES (1000000, 1);
+VALUES (1000000, 1),
+       (0, 2);
 
 
 insert into CreditCards (balance, account_id)
@@ -74,3 +92,7 @@ insert into Users(name, last_name, account_id, phone)
 values ('BandiBank', 'BandiBank', 1, '0000000'),
        ('Roman', 'Volobuev', 2, '3506538'),
        ('Egor', 'Volobuev', 3, '3506539');
+
+update Accounts
+set user_id = id
+where 1 = 1;

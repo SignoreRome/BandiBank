@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
+@Transactional(readOnly = true)
 public class CreditCardServiceImpl implements CreditCardService {
     private CreditCardRepository creditCardRepository;
 
@@ -19,7 +20,7 @@ public class CreditCardServiceImpl implements CreditCardService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = false)
     public CreditCard createCC(CreditCard creditCard) {
         return creditCardRepository.save(creditCard);
     }

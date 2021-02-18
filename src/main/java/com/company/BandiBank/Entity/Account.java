@@ -21,6 +21,10 @@ public class Account {
     private Long id;
     @Column(name = "created_time")
     private Date createdTime = new Date();
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
+
     @OneToMany(mappedBy = "accountCC")
     private List<CreditCard> creditCards = new ArrayList<>();
     @OneToMany(mappedBy = "accountDC")

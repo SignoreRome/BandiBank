@@ -1,5 +1,6 @@
 package com.company.BandiBank.Entity;
 
+import com.company.BandiBank.API.Transfer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "debitcards")
-public class DebitCard {
+public class DebitCard implements Transfer {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "debitcard_seq")
     @SequenceGenerator(name = "debitcard_seq", sequenceName = "debitcard_seq", allocationSize = 1)

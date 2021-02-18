@@ -1,5 +1,6 @@
 package com.company.BandiBank.Entity;
 
+import com.company.BandiBank.API.Transfer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +13,7 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CreditCard {
+public class CreditCard implements Transfer {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "creditcard_seq")
     @SequenceGenerator(name = "creditcard_seq", sequenceName = "creditcard_seq", allocationSize = 1)

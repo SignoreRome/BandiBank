@@ -1,5 +1,6 @@
 package com.company.BandiBank.Entity;
 
+import com.company.BandiBank.API.Transfer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Deposit {
+public class Deposit implements Transfer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "number")

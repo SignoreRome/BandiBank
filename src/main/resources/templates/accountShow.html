@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Account</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -29,10 +32,13 @@
         </tbody>
     </table>
 </div>
-
+</br>
+</hr>
+</br>
 <div th:if="${account.creditCards.size() != 0}">
     <div class="container">
         <table class="table table-hover">
+            <caption>Credit cards</caption>
             <thead>
             <tr>
                 <th>Number</th>
@@ -56,6 +62,7 @@
 <div th:if="${account.debitCards.size() != 0}">
     <div class="container">
         <table class="table table-hover">
+            <caption>Debit cards</caption>
             <thead>
             <tr>
                 <th>Number</th>
@@ -76,6 +83,28 @@
 </br>
 </hr>
 </br>
+<div th:if="${account.deposit != null}">
+    <div class="container">
+        <table class="table table-hover">
+            <caption>Deposit</caption>
+            <thead>
+            <tr>
+                <th>Number</th>
+                <th>Balance</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${account.deposit.number}"/>
+                <td th:text="${account.deposit.balance}"/>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</br>
+</hr>
+</br>
 <div>
     <table border="1" style="height: 18px; width: 100%; border-collapse: collapse; border-style: hidden;">
         <tbody>
@@ -84,14 +113,20 @@
                 <a th:href="@{/users/accounts/{idAcc}/new_deposit (idAcc = ${account.getId()})}">Открыть депозит</a>
             </td>
             <td style="width: 36.0056%; height: 18px;">
-                <a th:href="@{/users/accounts/{idAcc}/new_debit_card (idAcc = ${account.getId()})}">Создать дебетовую карту</a>
+                <a th:href="@{/users/accounts/{idAcc}/new_debit_card (idAcc = ${account.getId()})}">Создать дебетовую
+                    карту</a>
             </td>
             <td style="width: 33.3333%; height: 18px;">
-                <a th:href="@{/users/accounts/{idAcc}/new_credit_card (idAcc = ${account.getId()})}">Создать кредитную карту</a>
+                <a th:href="@{/users/accounts/{idAcc}/new_credit_card (idAcc = ${account.getId()})}">Создать кредитную
+                    карту</a>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
+</br>
+</hr>
+</br>
+    <a th:href="@{/users/accounts/{idAcc}/transfer_money (idAcc = ${account.getId()})}">Выполнить перевод</a>
 </body>
 </html>

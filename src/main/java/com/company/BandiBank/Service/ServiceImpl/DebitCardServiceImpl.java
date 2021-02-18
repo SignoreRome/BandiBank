@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional(readOnly = true)
 public class DebitCardServiceImpl implements DebitCardService {
     private DebitCardRepository debitCardRepository;
 
@@ -17,7 +18,7 @@ public class DebitCardServiceImpl implements DebitCardService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = false)
     public DebitCard createDC(DebitCard debitCard) {
         return debitCardRepository.save(debitCard);
     }

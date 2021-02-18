@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
+@Transactional(readOnly = true)
 public class AccountServiceImpl implements AccountService {
     private AccountRepository accountRepository;
 
@@ -24,13 +25,13 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = false)
     public Account createAcc(Account account) {
         return accountRepository.save(account);
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = false)
     public Account saveAcc(Account account) {
         return accountRepository.save(account);
     }

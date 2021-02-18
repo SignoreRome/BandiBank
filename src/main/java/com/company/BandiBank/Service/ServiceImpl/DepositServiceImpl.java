@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional(readOnly = true)
 public class DepositServiceImpl implements DepositService {
     private DepositRepository depositRepository;
 
@@ -17,7 +18,7 @@ public class DepositServiceImpl implements DepositService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = false)
     public Deposit createDeposit(Deposit deposit) {
         return depositRepository.save(deposit);
     }
