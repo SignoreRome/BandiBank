@@ -10,7 +10,11 @@ import java.util.List;
 
 public interface TransferMoneyService {
     boolean innerTransferMoneyFromTo(Long idAcc, Long fromNum, Long toNum, int transferSize);
+    boolean innerTransaction(Long idAcc, TransferMoney transaction);
+
     boolean outerTransferMoneyFromTo(Long numFromDep, String phoneTo, int transferSize) throws NotEnoughMoneyException;
+    boolean outerTransaction(Long id, TransferMoney transaction);
+
     TransferMoney save(TransferMoney transferMoney);
     List<TransferMoney> findAll();
 }

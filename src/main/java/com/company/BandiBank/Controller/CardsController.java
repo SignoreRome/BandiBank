@@ -59,7 +59,7 @@ public class CardsController {
         CreditCard creditCard = CC;
         creditCard.setAccountCC(account);
         creditCardService.createCC(creditCard);
-        return "redirect:/users";
+        return "redirect:/users/accounts/{idAcc}";
     }
 
     @PostMapping("/{idAcc}/cards/debit_card")
@@ -69,7 +69,7 @@ public class CardsController {
         DebitCard debitCard = DC;
         debitCard.setAccountDC(account);
         debitCardService.createDC(debitCard);
-        return "redirect:/users";
+        return "redirect:/users/accounts/{idAcc}";
     }
 
     @PostMapping("/{idAcc}/cards/deposit")
@@ -79,7 +79,7 @@ public class CardsController {
         Deposit depositCurr = deposit;
         depositCurr.setAccountDP(account);
         depositService.createDeposit(depositCurr);
-        return "redirect:/users";
+        return "redirect:/users/accounts/{idAcc}";
     }
 
 }

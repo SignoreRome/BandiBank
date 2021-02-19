@@ -1,13 +1,19 @@
 create sequence CreditCard_seq
-    start with 5000
+    start with 10000
     increment by 10
-    maxvalue 10000;
+    maxvalue 19999;
 
 create sequence DebitCard_seq
     start with 0
     increment by 10
     minvalue 0
-    maxvalue 4999;
+    maxvalue 9999;
+
+create sequence Deposit_seq
+    start with 20000
+    increment by 10
+    minvalue 0
+    maxvalue 30000;
 
 create table Accounts
 (
@@ -18,8 +24,8 @@ create table Accounts
 
 create table Deposits
 (
-    number     serial,
-    balance    int not null default 0,
+    number     int primary key default nextval('Deposit_seq'),
+    balance    int not null    default 0,
     account_id int not null,
     constraint FK_ACC_ID foreign key (account_id) references Accounts (id)
 );
@@ -96,3 +102,14 @@ values ('BandiBank', 'BandiBank', 1, '0000000'),
 update Accounts
 set user_id = id
 where 1 = 1;
+
+create view AccountCards as
+(
+select account_id, number, balance
+from creditcards
+union
+select account_id, number, balance
+from debitcards
+union
+select account_id, number, balance
+from deposits);

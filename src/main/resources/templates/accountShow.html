@@ -36,9 +36,9 @@
 </hr>
 </br>
 <div th:if="${account.creditCards.size() != 0}">
+    <h2 align="center">Credit cards</h2>
     <div class="container">
         <table class="table table-hover">
-            <caption>Credit cards</caption>
             <thead>
             <tr>
                 <th>Number</th>
@@ -60,9 +60,9 @@
 </hr>
 </br>
 <div th:if="${account.debitCards.size() != 0}">
+    <h2 align="center">Debit cards</h2>
     <div class="container">
         <table class="table table-hover">
-            <caption>Debit cards</caption>
             <thead>
             <tr>
                 <th>Number</th>
@@ -84,9 +84,9 @@
 </hr>
 </br>
 <div th:if="${account.deposit != null}">
+    <h2 align="center">Deposit</h2>
     <div class="container">
         <table class="table table-hover">
-            <caption>Deposit</caption>
             <thead>
             <tr>
                 <th>Number</th>

@@ -36,22 +36,18 @@ public class MoneyTransferController {
         return "transferMoney";
     }
 
-
     @PostMapping("/{idAcc}/transfer_money/outer_transaction")
     public String outerTransaction(@PathVariable("idAcc") Long idAcc,
                                    @ModelAttribute("transaction") TransferMoney transaction){
-        Account account = accountService.showAcc(idAcc).get();
-        TransferMoney transferMoney = transaction;
-        Long numFrom = account.getDeposit().getNumber();
-        String nameFrom = account.getUser().getName();
-        transferMoney.setFromName(nameFrom);
-        transferMoney.setFromNum(numFrom);
-        try{
-            transferMoneyService.outerTransferMoneyFromTo(transferMoney.getFromNum(), transferMoney.getToPhone(), transferMoney.getTransferSize());
-            transferMoneyService.save(transferMoney);
-        } catch (NotEnoughMoneyException e){
-            System.out.println("Lol");
-        }
-        return "redirect:/users";
+        transferMoneyService.outerTransaction(idAcc, transaction);
+        return "redirect:/users/accounts/{idAcc}";
     }
+
+    @PostMapping("/{idAcc}/transfer_money/inner_transaction")
+    public String innerTransaction(@PathVariable("idAcc") Long idAcc,
+                                   @ModelAttribute("transaction") TransferMoney transaction){
+        transferMoneyService.innerTransaction(idAcc, transaction);
+        return "redirect:/users/accounts/{idAcc}";
+    }
+
 }

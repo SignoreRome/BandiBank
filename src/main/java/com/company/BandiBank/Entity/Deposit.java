@@ -14,11 +14,12 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Deposit implements Transfer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "deposit_seq")
+    @SequenceGenerator(name = "deposit_seq", sequenceName = "deposit_seq", allocationSize = 1)
     @Column(name = "number")
     private Long number;
     @Column(name = "balance")
-    private int balance;
+    private Integer balance;
     @OneToOne
     @JoinColumn(name = "account_id")
     private Account accountDP;

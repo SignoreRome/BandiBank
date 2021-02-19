@@ -22,7 +22,7 @@ public class DebitCard implements Transfer {
     @Column(name = "valid_thru")
     private Date validThru = new Date();
     @Column(name = "balance")
-    private int balance;
+    private Integer balance;
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account accountDC;
