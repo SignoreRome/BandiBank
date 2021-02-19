@@ -69,8 +69,7 @@ create table TransferMoney
     from_name     varchar                  not null,
     transfer_size int                      not null,
     transfer_time timestamp with time zone not null default current_timestamp(2),
-    comment       varchar,
-    constraint FK_PHONE_USER foreign key (to_phone) references Users (phone)
+    comment       varchar
 );
 
 alter table Accounts

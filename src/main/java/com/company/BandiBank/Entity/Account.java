@@ -21,15 +21,15 @@ public class Account {
     private Long id;
     @Column(name = "created_time")
     private Date createdTime = new Date();
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "accountCC")
+    @OneToMany(mappedBy = "accountCC", cascade = CascadeType.ALL)
     private List<CreditCard> creditCards = new ArrayList<>();
-    @OneToMany(mappedBy = "accountDC")
+    @OneToMany(mappedBy = "accountDC" , cascade = CascadeType.ALL)
     private List<DebitCard> debitCards = new ArrayList<>();
-    @OneToOne(mappedBy = "accountDP")
+    @OneToOne(mappedBy = "accountDP", cascade = CascadeType.ALL)
     private Deposit deposit;
 
     public Account(Date createdTime) {

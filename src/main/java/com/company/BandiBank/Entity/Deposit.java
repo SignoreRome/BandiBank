@@ -19,8 +19,8 @@ public class Deposit implements Transfer {
     @Column(name = "number")
     private Long number;
     @Column(name = "balance")
-    private Integer balance;
-    @OneToOne
+    private int balance;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "account_id")
     private Account accountDP;
 

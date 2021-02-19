@@ -83,7 +83,7 @@ public class TransferMoneyServiceImpl implements TransferMoneyService {
     @Override
     @Transactional(readOnly = false)
     public boolean innerTransaction(Long idAcc, TransferMoney transaction) {
-        Account account = accountRepository.findById(idAcc).get();
+        Account account = accountRepository.getOne(idAcc);
         String fromName = account.getUser().getName();
         transaction.setFromName(fromName);
         try {

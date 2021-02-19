@@ -22,8 +22,8 @@ public class DebitCard implements Transfer {
     @Column(name = "valid_thru")
     private Date validThru = new Date();
     @Column(name = "balance")
-    private Integer balance;
-    @ManyToOne
+    private int balance;
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id")
     private Account accountDC;
 

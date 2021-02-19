@@ -26,12 +26,12 @@ public class View implements Transfer {
     }
 
     @Override
-    public Integer getBalance() {
+    public int getBalance() {
         return balance;
     }
 
     @Override
-    public void setBalance(Integer balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
     }
 }

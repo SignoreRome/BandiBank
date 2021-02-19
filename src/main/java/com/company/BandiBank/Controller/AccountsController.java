@@ -41,6 +41,7 @@ public class AccountsController {
                             @ModelAttribute("account") Account account){
 
         User user = userServiceImp.getUserById(userId).get();
+        account.setUser(user);
         accountService.createAcc(account);
         user.setAccount(account);
         userServiceImp.save(user);

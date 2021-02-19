@@ -23,7 +23,7 @@ public class User {
     @Column(name = "phone")
     private String phone;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "account_id")
     private Account account;
 
@@ -36,5 +36,12 @@ public class User {
         this.name = name;
         this.lastName = lastName;
         this.account = account;
+    }
+
+    public User(String name, String lastName, String email, String phone) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
     }
 }

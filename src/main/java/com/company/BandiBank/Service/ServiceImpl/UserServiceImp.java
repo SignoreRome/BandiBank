@@ -39,10 +39,11 @@ public class UserServiceImp implements UserService {
     @Override
     @Transactional(readOnly = false)
     public void updateUser(Long id, User updatedUser) {
-        userRepository.updateUser(id, updatedUser.getName(), updatedUser.getLastName());
+        userRepository.updateUser(id, updatedUser.getName(), updatedUser.getLastName(), updatedUser.getEmail(), updatedUser.getPhone());
     }
 
     @Override
+    @Transactional(readOnly = false)
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
