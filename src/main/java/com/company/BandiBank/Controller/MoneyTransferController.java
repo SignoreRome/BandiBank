@@ -1,8 +1,6 @@
 package com.company.BandiBank.Controller;
 
-import com.company.BandiBank.Entity.Account;
 import com.company.BandiBank.Entity.TransferMoney;
-import com.company.BandiBank.Exceptions.NotEnoughMoneyException;
 import com.company.BandiBank.Service.ServiceImpl.AccountServiceImpl;
 import com.company.BandiBank.Service.ServiceImpl.TransferMoneyServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,7 @@
 package com.company.BandiBank.Entity;
 
 import com.company.BandiBank.API.Transfer;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,8 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Date;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @Entity
 @Table(name = "debitcards")
@@ -23,18 +23,7 @@ public class DebitCard implements Transfer {
     private Date validThru = new Date();
     @Column(name = "balance")
     private int balance;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")
     private Account accountDC;
-
-    public DebitCard(int balance, Account accountDC) {
-        this.balance = balance;
-        this.accountDC = accountDC;
-    }
-
-    public DebitCard(Date validThru, int balance, Account accountDC) {
-        this.validThru = validThru;
-        this.balance = balance;
-        this.accountDC = accountDC;
-    }
 }

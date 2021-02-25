@@ -1,6 +1,7 @@
 package com.company.BandiBank.Entity;
 
 import com.company.BandiBank.API.Transfer;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,8 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "deposits")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class Deposit implements Transfer {
     @Id
@@ -20,12 +20,7 @@ public class Deposit implements Transfer {
     private Long number;
     @Column(name = "balance")
     private int balance;
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")
     private Account accountDP;
-
-    public Deposit(int balance, Account accountDP) {
-        this.balance = balance;
-        this.accountDP = accountDP;
-    }
 }

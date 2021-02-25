@@ -1,16 +1,14 @@
 package com.company.BandiBank.Entity;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "transfermoney")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class TransferMoney {
 
@@ -33,12 +31,4 @@ public class TransferMoney {
     private String toPhone;
     @Column(name = "comment")
     private String comment;
-
-    public TransferMoney(Long fromNum, Long toNum, int transferSize, String fromName, String toPhone) {
-        this.fromNum = fromNum;
-        this.toNum = toNum;
-        this.transferSize = transferSize;
-        this.fromName = fromName;
-        this.toPhone = toPhone;
-    }
 }

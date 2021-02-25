@@ -1,18 +1,17 @@
 package com.company.BandiBank.Entity;
 
 import com.company.BandiBank.API.Transfer;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "creditcards")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
+@NamedEntityGraph(name = "CreditCard", attributeNodes = {@NamedAttributeNode("accountCC")})
 public class CreditCard implements Transfer {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "creditcard_seq")
@@ -23,16 +22,7 @@ public class CreditCard implements Transfer {
     private Date validThru = new Date();
     @Column(name = "balance")
     private int balance;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")
     private Account accountCC;
-
-    public CreditCard(int balance) {
-        this.balance = balance;
-    }
-
-    public CreditCard(int balance, Account accountCC) {
-        this.balance = balance;
-        this.accountCC = accountCC;
-    }
 }
